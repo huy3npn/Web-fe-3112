@@ -43,22 +43,9 @@
 
 # Installation
 
-## Running Server
-
-```bash
-  git clone https://github.com/rohanshrestha09/Patra.git
-  cd Patra
-  npm install
-```
-
 ## Running Client
+git clone
 
-```bash
-  git clone https://github.com/rohanshrestha09/Patra.git
-  cd Patra
-  npm install
-  npm run start
-```
 
 ## Tech Stack used
 

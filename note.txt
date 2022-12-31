@@ -1,0 +1,35 @@
+trước khi update imaged thì dùng api /users
+- model
++photo
+sau khi update imaged thì dùng api của thịnh với model profile của thịnh
+
+
+# chỗ upload hình thì cần send 2 hình(cover and avatar) cho 1 request 
+
+
+
+#chỗ update vị trí
+lúc chưa bật ví trí thì popup lên nếu bạn không bật vị trí và reload lại trang thì sẽ lấy vị trí long lat qua api này http://ip-api.com/json     (nhớ lưu xuống local storage để xíu check)
+check if else để gởi ví trí cho đúng
+
+#phần update info user thì không cần update email x
+
+#cơ chế add friend
+nếu có cả 2 tin nhắn của 2 user trong component đó thì mới display user lên x 
+#cơ chế search của FE ngay chỗ chat
+search theo tên theo FE x
+
+# chỗ icon thì khi bấm ra ngoài thì tắt nó dùm t x
+
+# bấm vào avatar phải bự lên
+
+# update thông tin lại ở api này https://webbbbbbbb.vercel.app/profile/thinh
+
+
+#chỗ update hình BE (thịnh)  
+images.object.all().last()
+
+
+# code FE để lọc user theo distance/name ở api https://webbbbbbbb.vercel.app/users
+
+#code BE trường hợp forgot dùng lại token qua mail có được không

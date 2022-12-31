@@ -41,23 +41,23 @@
 
 ![image](/src/images/Finduser.png)
 
+## Update Information
+
+![image](/src/images/updateinfor.png)
+
+## Profile
+
+![image](/src/images/profile.png)
+
 # Installation
-
-## Running Server
-
-```bash
-  git clone https://github.com/rohanshrestha09/Patra.git
-  cd Patra
-  npm install
-```
 
 ## Running Client
 
 ```bash
-  git clone https://github.com/rohanshrestha09/Patra.git
-  cd Patra
-  npm install
-  npm run start
+  git clone https://github.com/huy3npn/Web-fe-3112.git
+  cd Web-fe-3112
+  yarn
+  yarn start
 ```
 
 ## Tech Stack used
@@ -65,6 +65,4 @@
 - React
 - TailwindCSS
 - TypeScript
-- Python
-- Django
 - Web socket

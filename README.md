@@ -44,14 +44,16 @@
 # Installation
 
 ## Running Client
-git clone
-
+```bash
+  git clone https://github.com/huy3npn/Web-fe-3112.git
+  cd Web-fe-3112
+  yarn
+  yarn start
+```
 
 ## Tech Stack used
 
 - React
 - TailwindCSS
 - TypeScript
-- Python
-- Django
 - Web socket

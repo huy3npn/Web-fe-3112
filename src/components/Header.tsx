@@ -1,20 +1,4 @@
-// import { Alert } from "flowbite-react";
 import React, { useState, useEffect } from "react";
-// import { useMutation, useQuery } from "@tanstack/react-query";
-// import axios from "axios";
-// import { Types } from "mongoose";
-// import { HiInformationCircle } from "react-icons/hi";
-// import SearchIcon from "@material-ui/icons/Search";
-// import { Modal } from "flowbite-react";
-// import { makeStyles } from "@material-ui/core/styles";
-// import { Input } from "@material-ui/core";
-// import HomeIcon from '@material-ui/icons/Home';
-// import NearMeOutlinedIcon from '@material-ui/icons/NearMeOutlined';
-// import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined';
-// import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
-// // import MapsUgcOutlinedIcon from '@material-ui/icons-material/MapsUgcOutlined';
-// import { Avatar, Dropdown } from "flowbite-react";
-// import { getAllUsers, setAvatar, deleteUser } from "../api";
 import { useNavigate } from "react-router-dom";
 
 
@@ -205,7 +189,7 @@ const Header: React.FC = () => {
   //                     <Dropdown.Divider />
   //                     <Dropdown.Item 
   //                       onClick={() => {
-  //                         navigate('/changeimg')
+  //                         navigate('/ChangeImgAvt')
   //                       }}
   //                     >
   //                       Pick an Avatar
@@ -316,7 +300,10 @@ const Header: React.FC = () => {
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
                 </li> */}
                 <li>
-                  <a href="/changeimg" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Set avatar</a>
+                  <a href="/ChangeImgAvt" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Set avatar</a>
+                </li>
+                <li>
+                  <a href="/ChangeImgCover" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Set Cover</a>
                 </li>
                 <li>
                   <a href="/changepass" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Change password</a>

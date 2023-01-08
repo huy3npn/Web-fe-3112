@@ -7,7 +7,8 @@ import VideoCall from "./components/VideoCall";
 import ReceiveCall from "./components/ReceiveCall"
 import Userlist from "./components/Userlist"
 import Profile from "./components/Profile"
-import ChangeImg from "./pages/ChangeImg";
+import ChangeImgAvt from "./pages/ChangeImgAvt";
+import ChangeImgCover from "./pages/ChangeImgCover";
 // import { AnswerCall } from "./call";
 import ChangeInfor from "./pages/ChangeInfor";
 import ForgetPass from "./pages/ForgetPass";
@@ -32,7 +33,8 @@ const App: React.FC = () => {
           <Route path="/users/" element={<Userlist />}/>
           {/* <Route path="/answercall/:answeruserid" element={<AnswerCall />} /> */}
           <Route path="/profile/:username" element={<Profile />}/>
-          <Route path="/changeimg" element={<ChangeImg />}/>
+          <Route path="/ChangeImgAvt" element={<ChangeImgAvt />}/>
+          <Route path="/ChangeImgCover" element={<ChangeImgCover />}/>
           <Route path="/changeinfor" element={<ChangeInfor />}/>
           <Route path="/api/password_reset/:token" element={<ForgetPass />}/>
           <Route path="/changepass" element={<ChangePass />}/>

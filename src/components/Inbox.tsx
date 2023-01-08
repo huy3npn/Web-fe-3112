@@ -473,7 +473,7 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
                     'Content-Type': 'application/json',                  
                   }
                 };
-                axios.post(`  http://localhost:8000/chat-app/message/`, datalog, config)
+                axios.post(`http://localhost:8000/chat-app/message/`, datalog, config)
                   .then((response) => {
                     // console.log('doroi')
                   })

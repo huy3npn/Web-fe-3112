@@ -12,10 +12,6 @@ import { statusSocket } from "../ws/ws"
 // import Header from "./Header"
 import { chatSocket } from "../ws/ws"
 
-
-
-
-
 interface Props {
   inboxToggle: boolean;
   setInboxToggle: React.Dispatch<React.SetStateAction<boolean>>;
@@ -65,6 +61,8 @@ const Preview: React.FC<Props> = ({
 
   const [chose, setChose] = useState<boolean>(true)
 
+  const [avt, setAvt] = useState<any>(undefined)
+
   
   
   const checkStranger = (username: any, allUsers: any) => {
@@ -80,6 +78,18 @@ const Preview: React.FC<Props> = ({
       return true
     }
   }
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/chat-app/images/')
+      .then((res) => {
+        setAvt(res.data)
+        // console.log(res.data)
+      }) 
+      .catch((err) => {
+        // console.log(err.message)
+      })
+  },[])
+
   
   const {
     data: allUsers,
@@ -91,7 +101,13 @@ const Preview: React.FC<Props> = ({
     // enabled: !!isSuccess,
   });
 
-  // console.log(allUsers);
+  // // console.log(allUsers);
+
+  useEffect(() => {
+    if (allUsers) {
+      setSearchItems(allUsers)
+    }
+  }, [allUsers])
 
 
   const { isLoading: isAvatarLoading } = useQuery({
@@ -127,7 +143,7 @@ const Preview: React.FC<Props> = ({
           title: res.message,
           type: "success",
         });
-        // console.log(res)
+        // // console.log(res)
       },
       onError: (err: any) =>
         setIsAlert({
@@ -139,8 +155,8 @@ const Preview: React.FC<Props> = ({
     }
   );
 
-  // chatSocket.onopen = event => console.log("Connected")
-  // chatSocket.onclose = event => console.log("Disconnected")
+  // chatSocket.onopen = event => // console.log("Connected")
+  // chatSocket.onclose = event => // console.log("Disconnected")
 
   const handleDeleteUser = useMutation((id: string) => deleteUser(id), {
     onSuccess: (res) => {
@@ -163,17 +179,17 @@ const Preview: React.FC<Props> = ({
   });
   
   
-  // statusSocket.onopen = event => console.log("Connected")
+  // statusSocket.onopen = event => // console.log("Connected")
   
   statusSocket.onmessage = function(evet) {
     const status = JSON.parse(evet.data)
     // setSocket(io('/'));
-    // console.log(status.user)
+    // // console.log(status.user)
     const userOnline = status.user.split(",")
     setUserOnline(userOnline)
     
   }
-  // statusSocket.onclose = event => console.log("Disconnected")
+  // statusSocket.onclose = event => // console.log("Disconnected")
 
   // chatSocket.onmessage = function(e) {
   //   const res = JSON.parse(e.data).text
@@ -181,10 +197,10 @@ const Preview: React.FC<Props> = ({
   //   const data = res.split(":")
   //   const sender = data[0]
   //   const message = data[1]
-  //   console.log(message)
+  //   // console.log(message)
   //   const username_mess = document.getElementsByClassName(`${sender}-mess`)[0]
   //   // username_mess.innerText = message
-  //   console.log(username_mess.innerHTML)
+  //   // console.log(username_mess.innerHTML)
   //   username_mess.innerHTML = message
   // }
 
@@ -192,11 +208,11 @@ const Preview: React.FC<Props> = ({
     return new Date(date).toLocaleTimeString()
   }
 
-  // console.log(allUsers[0].messages[0].date_time)
+  // // console.log(allUsers[0].messages[0].date_time)
  
   const username = JSON.parse(localStorage.getItem('user')||'').username
   
-  // console.log(date)
+  // // console.log(date)
 
   const searchFunction = (seachName: string) => {
 
@@ -213,14 +229,16 @@ const Preview: React.FC<Props> = ({
     }
   }
 
-
-  useEffect(() => {
-    if (allUsers) {
-      setSearchItems(allUsers)
+  const findAvt = (usename: any) => {
+    if (avt) {
+      const result = avt.find((x:any) => x.username == usename)
+      // console.log(result)
+      return 'http://localhost:8000/media/'+result.images1
     }
-  }, [allUsers])
-
-
+    else {
+      // console.log("No avt found")
+    }
+  }
 
   return (
     
@@ -398,13 +416,13 @@ const Preview: React.FC<Props> = ({
                       setInboxToggle(true);
                       setUsername(element.username);
                       // setFocus(!focus)
-                      // console.log(e)
+                      // // console.log(e)
                     }}
 
                   >
                     <Avatar
                       img={
-                        element.photo 
+                        findAvt(element.username) 
                       }
                       rounded={true}
                       status={userOnline.includes(element.username) ? "online" : "busy"}

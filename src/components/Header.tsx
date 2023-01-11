@@ -24,7 +24,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     setMyself(JSON.parse(localStorage.getItem('user') || ''))
-    // console.log(myself)
+    // // console.log(myself)
   },[])
 
 
@@ -208,7 +208,7 @@ const Header: React.FC = () => {
   //                         }
   //                       }
   //                       axios.post(`http://localhost:8000/chat-app/logout/`, config)
-  //                         .then(response => console.log(response.data))
+  //                         .then(response => // console.log(response.data))
   //                       // navigate("/signup")
   //                     }}>Sign out</Dropdown.Item>
   //                   </ul>
@@ -231,14 +231,14 @@ const Header: React.FC = () => {
         };
         axios.post("http://localhost:8000/chat-app/logout/?format=json",{}, helo)
         .then((res) => {
-          // console.log(res);
+          // // console.log(res);
           if (res.data.message === 'logout') {
-            console.log('seccc')
+            // console.log('seccc')
             localStorage.setItem('token', '')
             localStorage.setItem('user', '')
             navigate("/signup")
           } else {
-            console.log(res)
+            // console.log(res)
           }
         })
 

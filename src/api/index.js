@@ -26,7 +26,6 @@ export const getAllUsers = async (id) => {
 
   const config = {
       headers: { Authorization: `Bearer ${token}`,
-      
     }
   };
 
@@ -34,10 +33,8 @@ export const getAllUsers = async (id) => {
   //   key: "value"
   // };
   const res = await axios.get(`  http://localhost:8000/chat-app/users/`, config);
-  
-  
-
   return res.data;
+
 };
 
 export const setAvatar = async ({ id, imgUrl }) => {

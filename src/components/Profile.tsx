@@ -33,7 +33,7 @@ const Profile : React.FC = () => {
             })
     },[])
     
-    console.log(user)
+    // console.log(user)
     
     const handleAddFriend = (event: React.SyntheticEvent) => {
         setAddFriend(false)
@@ -49,7 +49,7 @@ const Profile : React.FC = () => {
               'text': message,
               'receiver': username
             })
-            // console.log(data)
+            // // console.log(data)
             const token = localStorage.getItem('token')
 
             const config = {
@@ -60,7 +60,7 @@ const Profile : React.FC = () => {
             };
             axios.post(`  http://localhost:8000/chat-app/message/`, datalog, config)
               .then((response) => {
-                // console.log('doroi')
+                // // console.log('doroi')
               })
           }
     }

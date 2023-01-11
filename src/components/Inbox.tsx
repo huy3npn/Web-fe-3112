@@ -68,13 +68,13 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
   // useEffect(() => {
   //   socket &&
   //     socket.on('receive-message', (text: string) => {
-  //       console.log(text);
+  //       // console.log(text);
   //       setRealTimeMessage((message: any) => [{ self: false, message: text }, ...message]);
   //     });
   //   // eslint-disable-next-line
   // }, [socket]);
   // useEffect(()=> {
-  //   console.log(`rerender: ${username}`)
+  //   // console.log(`rerender: ${username}`)
   // }
   // ,[username])
 
@@ -94,18 +94,18 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
     onSuccess: (data) => {
       // setSocket(io('/'));
       // setRealTimeMessage(data);
-      // console.log(data)
+      // // console.log(data)
       setRealTimeMessage([])
 
       const conversation = data.find(function (el: any) {
         return el.username === username 
       })
-      // console.log(conversation.photo)
+      // // console.log(conversation.photo)
       setReceiverProfile(conversation)
       
 
       conversation.messages.map((element: any, index: any, array: any) => {
-        // console.log(`${element.sender}: ${element.text}`)
+        // // console.log(`${element.sender}: ${element.text}`)
         // alert(1)
 
         
@@ -133,11 +133,11 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
   });
 
   chatSocket.onmessage = function(e) {
-    // console.log(e.data);
+    // // console.log(e.data);
     const status = JSON.parse(e.data).status
     
     if (status === "new_call") {
-      // console.log(status)
+      // // console.log(status)
       window.open(`https://localhost:3000/answercall/${JSON.parse(e.data).message.data.sender}`)
     }
     const data = JSON.parse(e.data).text
@@ -189,7 +189,7 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
           });
         // setRealTimeMessage((prev) => [{ self: true, message }, ...prev]);
         setMessage('');
-        // console.log(realTimeMessage)
+        // // console.log(realTimeMessage)
       },
       
     }
@@ -204,16 +204,16 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
   
   
 
-  // chatSocket.onopen = event => console.log("Connected")
-  // chatSocket.onclose = event => console.log("Disconnected")
+  // chatSocket.onopen = event => // console.log("Connected")
+  // chatSocket.onclose = event => // console.log("Disconnected")
   // chatSocket.onmessage = function(e){ 
-  //   console.log(e.data) 
+  //   // console.log(e.data) 
   // }
-  // chatSocket.onerror = event => console.log(`Error: `)
+  // chatSocket.onerror = event => // console.log(`Error: `)
 
   // const handleSubmitWs = (message: string) => {
   //   chatSocket.onopen = () => {
-  //     console.log('connect');
+  //     // console.log('connect');
       
   //     chatSocket.send(JSON.stringify({
   //       'message': message,
@@ -224,7 +224,7 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
 
   // alert(username)
   
-  // console.log(realTimeMessage.length ? true : false)
+  // // console.log(realTimeMessage.length ? true : false)
   
   const handleDate = (date: string) => {
     return new Date(date)
@@ -389,7 +389,7 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
                   'text': message,
                   'receiver': username
                 })
-                // console.log(data)
+                // // console.log(data)
                 chatSocket.send(data)
                 const token = localStorage.getItem('token')
 
@@ -402,7 +402,7 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
                 };
                 axios.post(`  http://localhost:8000/chat-app/message/`, datalog, config)
                   .then((response) => {
-                    // console.log('doroi')
+                    // // console.log('doroi')
                   })
                 // const send = () => sendMessageWs(username, message)
                 const date = new Date()
@@ -463,7 +463,7 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
                   'text': message,
                   'receiver': username
                 })
-                // console.log(data)
+                // // console.log(data)
                 chatSocket.send(data)
                 const token = localStorage.getItem('token')
 
@@ -475,7 +475,7 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
                 };
                 axios.post(`http://localhost:8000/chat-app/message/`, datalog, config)
                   .then((response) => {
-                    // console.log('doroi')
+                    // // console.log('doroi')
                   })
 
                 const date = new Date();

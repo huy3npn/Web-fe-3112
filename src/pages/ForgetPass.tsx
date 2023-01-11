@@ -67,7 +67,7 @@ const ForgetPass: React.FC = () => {
                     <div
                         className="rounded-md border border-[#1A2238] px-5 py-2 hover:bg-[#1A2238] hover:text-white trainsition-all duration-300 cursor-pointer"
                         onClick={() => {
-                            console.log(tokens.token)
+                            // console.log(tokens.token)
                             axios.post(`  http://localhost:8000/api/password_reset/confirm/`,{
                                 token: tokens.token,
                                 password: password
@@ -91,7 +91,7 @@ const ForgetPass: React.FC = () => {
                                     }
                                 })
                                 .catch((err) => {
-                                    // console.log(err.message)
+                                    // // console.log(err.message)
                                     const message = err.message
                                     toast.error(message, {
                                         position: "top-right",

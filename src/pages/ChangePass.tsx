@@ -121,7 +121,7 @@ const ChangePass: React.FC<Props> = () => {
                                     //         navigate('/signup')
                                     //     },2000)
                                     // }
-                                    console.log(res)
+                                    // console.log(res)
                                     if (res.data.status === 'success') {
                                         const message = res.data.message
                                         toast.success(message, {
@@ -140,7 +140,7 @@ const ChangePass: React.FC<Props> = () => {
                                     }
                                 })
                                 .catch((err) => {
-                                    console.log(err.message)
+                                    // console.log(err.message)
                                     const message = err.message
                                     toast.error(message, {
                                         position: "top-right",

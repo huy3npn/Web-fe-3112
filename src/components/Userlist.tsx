@@ -27,7 +27,7 @@ const Userlist : React.FC = () => {
     const [searchItems, setSearchItems] = useState<any>(undefined)
 
     const showPosition = (position: any) => {
-        console.log(position.coords.latitude,  position.coords.longitude)
+        // console.log(position.coords.latitude,  position.coords.longitude)
         setLatitude(position.coords.latitude.toString())
         setLongitude(position.coords.longitude.toString())
     }
@@ -40,7 +40,7 @@ const Userlist : React.FC = () => {
         if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, alertPermission);
         } else {
-        console.log('error')
+        // console.log('error')
         }
     }, [])
 
@@ -52,7 +52,7 @@ const Userlist : React.FC = () => {
     }, [])
 
     if (local) {
-        console.log(local.localityInfo.administrative)
+        // console.log(local.localityInfo.administrative)
         var location = local.localityInfo.administrative
         const diachi = location.map((el: any) => {
         return el.name.toString()
@@ -64,7 +64,7 @@ const Userlist : React.FC = () => {
 
 
         var name = uniqueArray.reverse().join(', ')
-        console.log(name)
+        // console.log(name)
     }
 
     // useEffect(() => {
@@ -110,13 +110,13 @@ const Userlist : React.FC = () => {
             setSearchItems(dataUser)
           } else {
             const search = dataUser.filter((user:any) => {
-                console.log(user.name)
+                // console.log(user.name)
                 return user.name.toLowerCase().includes(searchName.toLowerCase())
             })
             setSearchItems(search)
           }
         }
-        console.log(searchItems)
+        // console.log(searchItems)
       }
 
 //   ============================================================
@@ -170,7 +170,7 @@ const Userlist : React.FC = () => {
                                     placeholder="Search for users"
                                     onChange={(e:any) => {
                                         searchFunction(e.target.value)
-                                        console.log(e.target.value)
+                                        // console.log(e.target.value)
                                         setSearchName(e.target.value)
                                     }}
                                 />

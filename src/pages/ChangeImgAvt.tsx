@@ -43,7 +43,7 @@ const ChangeImgAvt: React.FC = () => {
                     }, 2000)
                 })
                 .catch((err) => {
-                    console.log(err.message)
+                    // console.log(err.message)
                     const message = err.message
                     toast.error(message, {
                         position: "top-right",
@@ -65,13 +65,13 @@ const ChangeImgAvt: React.FC = () => {
 
     const onChange = (imageList: any, addUpdateIndex: any) => {
         // data for submit
-        console.log(imageList[0], addUpdateIndex);
+        // console.log(imageList[0], addUpdateIndex);
         setAvatar(imageList[0]);
     };
 
     const onChangeCover = (e: any) => {
         setAvatar(e.target.files)
-        console.log(cover)
+        // console.log(cover)
     }
 
     return (

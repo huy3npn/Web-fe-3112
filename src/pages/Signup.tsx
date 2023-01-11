@@ -91,7 +91,7 @@ const Signup: React.FC = () => {
         type: "failure",
       }),
       // {
-      //   console.log(err.message)
+      //   // console.log(err.message)
       //   toast(err.message, toastOption)
       // }
       
@@ -106,7 +106,7 @@ const Signup: React.FC = () => {
         type: "success",
       });
       // redirection(res.token);
-      // console.log(res.message);
+      // // console.log(res.message);
       setIsLoginToggled(true)
     },
     onError: (err: any) =>
@@ -131,7 +131,7 @@ const Signup: React.FC = () => {
     }
     axios.post('  http://localhost:8000/api/password_reset/', data)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.data.status === 'OK') {
           const message = 'Check your email!'
           toast.success(message, {
@@ -145,7 +145,7 @@ const Signup: React.FC = () => {
             theme: "light",
           });
         } else {
-          console.log(res)
+          // console.log(res)
           const message = res.data.email
           toast.error(message, {
             position: "top-right",
@@ -160,7 +160,7 @@ const Signup: React.FC = () => {
         }
       })
       .catch((err) => {
-        console.log(err.message)
+        // console.log(err.message)
         const message = err.message
         toast.error(message, {
             position: "top-right",

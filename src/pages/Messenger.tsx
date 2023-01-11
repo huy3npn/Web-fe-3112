@@ -12,7 +12,7 @@ const Messenger: React.FC = () => {
   const [username, setUsername] = useState<string>("");
 
   useEffect(() => {
-    chatSocket.onmessage = (e) => console.log(e) 
+    chatSocket.onmessage = (e) =>  console.log(e) 
   })
 
   return (

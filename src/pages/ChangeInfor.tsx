@@ -26,7 +26,7 @@ const ChangeInfor: React.FC = () => {
       phone_number: phoneNumber,
       birth_day: birthday,
     }
-    console.log(data)
+    // console.log(data)
     const token = localStorage.getItem('token')
     const config = {
       headers: { 'Authorization': `Bearer ${token}`}
@@ -50,7 +50,7 @@ const ChangeInfor: React.FC = () => {
       }, 2000)
       })
       .catch((err) => {
-        console.log(err.message)
+        // console.log(err.message)
                     const message = err.message
                     toast.error(message, {
                         position: "top-right",

@@ -20,12 +20,12 @@ function VideoCall() {
 
     useEffect(()=>{
         peer.on('open', (id) => {
-            // console.log(id)
+            // // console.log(id)
             setPeerId(id)
         })
     },[])
 
-    // console.log(peerId);
+    // // console.log(peerId);
     
     
     useEffect(() => {
@@ -49,13 +49,13 @@ function VideoCall() {
             sender: sender,
             peer_id: peerId
         }
-        // console.log(callusername)
-        // console.log(data)
+        // // console.log(callusername)
+        // // console.log(data)
 
         axios.post('  http://localhost:8000/chat-app/start-call/', data, config).then(response => {
-        // console.log(response)
+        // // console.log(response)
         }).catch(error => {
-        // console.log(error.response)
+        // // console.log(error.response)
         })
     }
 
@@ -68,7 +68,7 @@ function VideoCall() {
                 endCall()
                 break
             }
-            // console.log(message)
+            // // console.log(message)
     }
 
     const endCall = () => {

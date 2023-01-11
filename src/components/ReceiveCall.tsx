@@ -64,7 +64,7 @@ const AnswerCall: React.FC = () => {
   }, [currentUser]);
 
   // chatSocket.onmessage = function(e) {
-  //   // console.log(JSON.parse(e.data))
+  //   // // console.log(JSON.parse(e.data))
   // }
 
   
@@ -77,14 +77,14 @@ const AnswerCall: React.FC = () => {
         handleEndCall()
         break
     }
-    console.log(message)
+    // console.log(message)
   }
   
 
   if (MyPeer) {
     MyPeer.on("open", (id: any) => {
       MyPeer.on("call", (call: any) => {
-        console.log(call)
+        // console.log(call)
         takeCall.addEventListener("click", () => {
           setisTakeCall(true);
           navigator.mediaDevices 
@@ -93,15 +93,15 @@ const AnswerCall: React.FC = () => {
               audio: true,
             })
             .then((stream) => {
-              console.log(stream)
+              // console.log(stream)
               addVideoStream(myVideo, stream);
             //   myVideo.muted = true;
-              console.log(stream)
+              // console.log(stream)
               call.answer(stream)
               
               call.on('stream', function(remoteStream: any) {
-                console.log('remote stream: ')
-                console.log(remoteStream)
+                // console.log('remote stream: ')
+                // console.log(remoteStream)
                 addVideoStream(currentVideoCall, remoteStream);
               });
             });
@@ -117,7 +117,7 @@ const AnswerCall: React.FC = () => {
       peer_id: answerusername
     }
 
-    console.log(data)
+    // console.log(data)
 
     const token = localStorage.getItem('token')
 
@@ -130,9 +130,9 @@ const AnswerCall: React.FC = () => {
     };
 
     axios.post('  http://localhost:8000/chat-app/end-call/', data, config).then(response => {
-      console.log(response)
+      // console.log(response)
     }).catch(error => {
-      console.log(error.response)
+      // console.log(error.response)
     })
   }
 

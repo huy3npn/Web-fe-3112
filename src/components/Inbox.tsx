@@ -258,7 +258,6 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
     if (id) {
       if (avt) {
         const result = avt.find((x:any) => x.id == id)
-        // console.log(result)
         if (!result) {
           return 'https://project-ltw-final.onrender.com/media/girl.svg'
         } else {
@@ -266,7 +265,6 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
         }
       }
       else {
-        // console.log("No avt found")
       }
     } else {
       return
@@ -288,7 +286,6 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
         <div className='basis-3/4'>
           <Avatar
             img={
-              // receiverProfile && receiverProfile.photo
               findAvt(id)
             }
             rounded={true}
@@ -333,13 +330,6 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
       
       <div 
         className='w-full basis-3/4 flex flex-col-reverse px-6 overflow-scroll overflow-x-hidden'
-        onScroll={(e) => {
-          // const scrollY = window.scrollY //Don't get confused by what's scrolling - It's not the window
-          // const scrollTop = myRef.current?.scrollTop
-          // // const offsetTop = myRef.current?
-          
-          
-        }}
         ref = {myRef}
       >
         
@@ -392,7 +382,6 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
             <div style={{
               width: '100%',
               height: '100%',
-              // backgroundImage: 'url("https://cdn.dribbble.com/users/2333097/screenshots/8574268/media/c024e71216d2ce5d8dd97c81781d573b.gif")',
               backgroundImage: 'url("/image/inbox.gif")',
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
@@ -413,10 +402,6 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
           onSubmit={(event: React.SyntheticEvent) => {
             if (message) {
               event.preventDefault();
-                // handleSendMessage.mutate({
-                //   receiver: username,
-                //   text: message,
-                // });
                 const send = `${JSON.parse(localStorage.getItem("user")|| "").username }: ${message}`
                 const data = JSON.stringify({
                   'message': send,
@@ -426,7 +411,6 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
                   'text': message,
                   'receiver': username
                 })
-                // // console.log(data)
                 chatSocket.send(data)
                 const token = localStorage.getItem('token')
 
@@ -441,7 +425,6 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
                   .then((response) => {
                     // // console.log('doroi')
                   })
-                // const send = () => sendMessageWs(username, message)
                 const date = new Date()
                 const date_time = date.toISOString()
                 setRealTimeMessage((prev) => [{ self: true, message, date_time}, ...prev]);
@@ -487,10 +470,6 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
             onClick={(event: React.SyntheticEvent) => {
               if (message) {
                 event.preventDefault();
-                // handleSendMessage.mutate({
-                //   receiver: username,
-                //   text: message,
-                // });
                 const send = `${JSON.parse(localStorage.getItem("user")|| "").username }: ${message}`
                 const data = JSON.stringify({
                   'message': send,
@@ -517,8 +496,6 @@ const Inbox: React.FC<Props> = ({ inboxToggle, setInboxToggle, username }) => {
 
                 const date = new Date();
                 const date_time = date.toISOString();
-                // const send = () => sendMessageWs(username, message)
-                
                 setRealTimeMessage((prev) => [{ self: true, message, date_time }, ...prev]);
                 setMessage('');
               }

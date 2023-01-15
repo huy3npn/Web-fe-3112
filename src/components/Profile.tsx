@@ -37,11 +37,7 @@ const Profile : React.FC = () => {
         const config = {
             headers: { Authorization: `Bearer ${token}` }
         };
-        // axios.get('https://project-ltw-final.onrender.com/chat-app/profile/?format=json', config)
-        //     .then((res) => {
-        //         setUser(res.data[0])
-        //     })
-
+    
         axios.get('https://project-ltw-final.onrender.com/chat-app/users/', config)
             .then((res) => {
                 setUsers1(res.data)
@@ -88,7 +84,7 @@ const Profile : React.FC = () => {
           return result.images1
         }
         else {
-          // console.log("No avt found")
+
         }
     }
 
@@ -99,7 +95,7 @@ const Profile : React.FC = () => {
           return result.images2
         }
         else {
-          // console.log("No avt found")
+
         }
     }
 
@@ -110,7 +106,7 @@ const Profile : React.FC = () => {
           return result1.username
         }
         else {
-          // console.log("No avt found")
+     
         }
     }
 
@@ -121,7 +117,7 @@ const Profile : React.FC = () => {
           return result1.location
         }
         else {
-          // console.log("No avt found")
+        
         }
     }
 
@@ -132,7 +128,7 @@ const Profile : React.FC = () => {
           return result1.phone_number
         }
         else {
-          // console.log("No avt found")
+    
         }
     }
 
@@ -143,7 +139,7 @@ const Profile : React.FC = () => {
           return result1.phone_number
         }
         else {
-          // console.log("No avt found")
+ 
         }
     }
     
@@ -153,15 +149,10 @@ const Profile : React.FC = () => {
         const message = 'hello'
         if (message) {
             event.preventDefault();
-            // handleSendMessage.mutate({
-            //   receiver: username,
-            //   text: message,
-            // });
             const datalog = JSON.stringify({
               'text': message,
               'receiver': username
             })
-            // // console.log(data)
             const token = localStorage.getItem('token')
 
             const config = {
@@ -254,10 +245,6 @@ const Profile : React.FC = () => {
                                 <i className="fas fa-phone mr-2 text-lg text-blueGray-400"></i>
                                 {`${findPhoneNumber(id)}`}
                                 </div>
-                                {/* <div className="mb-2 text-blueGray-600">
-                                <i className="fas fa-university mr-2 text-lg text-blueGray-400"></i>
-                                {user1.workplace}
-                                </div> */}
                             </div>
                             <div className="mt-10 py-10 border-t border-blueGray-200 text-center" style={{width: '1450px'}}>
                                 <div className="flex flex-wrap justify-center">

@@ -79,7 +79,6 @@ const Userlist : React.FC = () => {
         if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, alertPermission);
         } else {
-        // console.log('error')
         }
     }, [])
 
@@ -91,7 +90,6 @@ const Userlist : React.FC = () => {
     }, [])
 
     if (local) {
-        // console.log(local.localityInfo.administrative)
         var location = local.localityInfo.administrative
         const diachi = location.map((el: any) => {
         return el.name.toString()
@@ -103,7 +101,6 @@ const Userlist : React.FC = () => {
 
 
         var name = uniqueArray.reverse().join(', ')
-        // console.log(name)
     }
 
     // useEffect(() => {
@@ -159,7 +156,6 @@ const Userlist : React.FC = () => {
             setSearchItems(search)
           }
         }
-        // console.log(searchItems)
     }
 
     const findAvt = (id: any) => {
@@ -169,7 +165,7 @@ const Userlist : React.FC = () => {
           return result.images1
         }
         else {
-          // console.log("No avt found")
+
         }
     }
 
@@ -180,25 +176,9 @@ const Userlist : React.FC = () => {
           return result1.username
         }
         else {
-          // console.log("No avt found")
+  
         }
     }
-
-
-    // if (dataUsers) {
-    //     setList(dataUsers.map((el: any, index:any) => {
-    //         return {
-    //             username: findUsername(el.id),
-    //             photo: findAvt(el.id),
-    //             position: 'Dĩ An, Bình Dương',
-    //             distance: '20',
-    //         }
-    //     }))
-    //     console.log(list)
-    // }
-
-//   ============================================================
-
     
     return (
         <>
@@ -206,23 +186,6 @@ const Userlist : React.FC = () => {
             <div className="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
                 <div className="mb-1 w-full">
                     <div className="mb-4">
-                        {/* <nav className="flex mb-5" aria-label="Breadcrumb">
-                            <ol className="inline-flex items-center space-x-1 md:space-x-2">
-                            <li 
-                                className="inline-flex items-center" 
-                                onClick={
-                                    handleBackHome
-                                }
-                            >
-                                <a href="#" className="text-gray-700 hover:text-gray-900 inline-flex items-center">
-                                <svg className="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
-                                Back to messages
-                                </a>
-                            </li>
-
-                           
-                            </ol>
-                        </nav> */}
                         <h1 
                             className="text-xl sm:text-2xl font-semibold text-gray-900"
                             style={{

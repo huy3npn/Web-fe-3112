@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-
-
-// import "./Header.css"
 import axios from "axios";
 
 
 const Header: React.FC = () => {
   const navigate = useNavigate()
-  // const { user } = useContext<any>(userContext);
   const [toggle, setToggle] = useState<boolean>(false);
   const [toggle1, setToggle1] = useState<boolean>(false);
   const [myself, setMyself] = useState<any>(null)
@@ -27,202 +22,9 @@ const Header: React.FC = () => {
     // // console.log(myself)
   },[])
 
-
-  
-  
-  
-  // const [isDeleteUserModalOpen, setIsDeleteUserModalOpen] =
-  // useState<boolean>(false);
-
-  // const [isAvatarModalOpen, setIsAvatarModalOpen] = useState<boolean>(false);
-
-  // const [avatarImage, setAvatarImage] = useState<string[]>([]);
-
-  // const [avatarSelectIndex, setAvatarSelectIndex] = useState<number>(NaN);
-
-  // const searchRef = useRef() as any;
-
-  // const [avtForm, setAvtForm] = useState<boolean>(false)
-
-  // const {
-  //   data: allUsers,
-  //   isLoading: isPreviewLoading,
-  //   refetch: refetchAllUsers,
-  // } = useQuery({
-  //   queryFn: () => getAllUsers(user && user._id),
-  //   queryKey: ["allUsersData"],
-  //   enabled: !!isSuccess,
-  // });
-
-  // const avt = JSON.parse(localStorage.getItem('user')||'').photo;
-
-  // const { isLoading: isAvatarLoading } = useQuery({
-  //   queryFn: async () => {
-  //     const imageData = [];
-  //     for (let i = 0; i < 6; i++) {
-  //       const { data } = await axios.get(
-  //         `https://api.multiavatar.com/4645646/${Math.round(
-  //           Math.random() * 1000
-  //         )}?apikey=nQluaHjWZ83G95`
-  //       );
-  //       const buffer = new Buffer(data);
-  //       imageData.push(buffer.toString("base64"));
-  //     }
-  //     setAvatarImage(imageData);
-  //   },
-  //   queryKey: ["getAvatar"],
-  //   refetchOnWindowFocus: false,
-  // });
-
-  // const handleSetAvatar = useMutation(
-  //   ({ id, imgUrl }: { id: string | Types.ObjectId; imgUrl: string }) =>
-  //     setAvatar({ id, imgUrl }),
-  //   {
-  //     onSuccess: (res) => {
-  //       refetchAllUsers();
-  //       refetch();
-  //       setIsAvatarModalOpen(false);
-  //       setIsAlert({
-  //         ...isAlert,
-  //         isOpen: true,
-  //         title: res.message,
-  //         type: "success",
-  //       });
-  //     },
-  //     onError: (err: any) =>
-  //       setIsAlert({
-  //         ...isAlert,
-  //         isOpen: true,
-  //         title: err.response.data,
-  //         type: "failure",
-  //       }),
-  //   }
-  // );
-
-  // const handleDeleteUser = useMutation((id: string) => deleteUser(id), {
-  //   onSuccess: (res) => {
-  //     userLogout();
-  //     setIsDeleteUserModalOpen(false);
-  //     setIsAlert({
-  //       ...isAlert,
-  //       isOpen: true,
-  //       title: res.message,
-  //       type: "success",
-  //     });
-  //   },
-  //   onError: (err: any) =>
-  //     setIsAlert({
-  //       ...isAlert,
-  //       isOpen: true,
-  //       title: err.response.data,
-  //       type: "failure",
-  //     }),
-  // });
-
   const handleUsers = () => {
     navigate('/users')
   }
-
-  // return (
-  //   <>
-  //       <div className="app__header">
-  //         <div className="img-logo">
-
-  //           <img
-  //             className="app__headerImage"
-  //             // src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Google_Chat_logo_%282017-2020%29.svg/2560px-Google_Chat_logo_%282017-2020%29.svg.png"
-  //             src = "/image/logo.svg.png"
-  //             alt="instagram"
-  //           />
-  //         </div>
-
-  //         <div className="searchForm">
-  //           <form>
-  //             <SearchIcon className="searchIcon opa" fontSize="medium" />
-  //             <input type="text" id="filter" placeholder="Search" className="searchBarInput no-outline"/>
-  //           </form>
-  //         </div>
-
-  //         <div className="container-icons">
-
-  //           <div className="header_icons">
-  //             <HomeIcon fontSize="large" className="header_icon" onClick={() => navigate("/")}/>
-              
-  //             <NearMeOutlinedIcon fontSize="large" className="header_icon"/>
-  //             <ExploreOutlinedIcon fontSize="large" className="header_icon"/>
-  //             <FavoriteBorderOutlinedIcon fontSize="large" className="header_icon" />
-
-  //             <div className="avt">
-  //               <div className="dropdown dropdown-end">
-  //                   <label
-  //                     tabIndex={0}
-  //                     className="btn bg-transparent outline-none border-0 hover:bg-transparent"
-  //                   >
-  //                     <Avatar
-  //                       className="absolute -z-10 text-[#ff6a3d] pointer-events-none w-7 h-7"
-  //                       img={
-  //                         user
-  //                           ? `${user.photo}`
-  //                           : undefined
-  //                       }
-  //                       rounded={true}
-  //                       status="online"
-  //                       statusPosition="bottom-right"
-  //                     ></Avatar>
-  //                   </label>
-  //                   <ul
-  //                     tabIndex={0}
-  //                     className="dropdown-content menu p-2 shadow rounded-box w-52 bg-white"
-  //                   >
-  //                     <Dropdown.Header>
-  //                       <span className="block text-sm truncate">
-  //                         {user && user.fullname}
-  //                       </span>
-  //                       <span className="block truncate text-sm font-medium">
-  //                         {user && user.email}
-  //                       </span>
-  //                     </Dropdown.Header>
-
-  //                     <Dropdown.Item onClick={handleUsers}>
-  //                       See all friend
-  //                     </Dropdown.Item>
-  //                     <Dropdown.Divider />
-  //                     <Dropdown.Item 
-  //                       onClick={() => {
-  //                         navigate('/ChangeImgAvt')
-  //                       }}
-  //                     >
-  //                       Pick an Avatar
-  //                     </Dropdown.Item>
-  //                     <Dropdown.Divider />
-  //                     <Dropdown.Item onClick={() => navigate('/changeinfor')}>
-  //                       Change information
-  //                     </Dropdown.Item>
-  //                     <Dropdown.Divider />
-  //                     <Dropdown.Item onClick={() => {
-  //                       const token = ''
-  //                       localStorage.setItem('token', token)
-  //                       const config = {
-  //                         header: {
-  //                           Authorization: `Bearer ${token}`
-  //                         }
-  //                       }
-  //                       axios.post(`https://project-ltw-final.onrender.com/chat-app/logout/`, config)
-  //                         .then(response => // console.log(response.data))
-  //                       // navigate("/signup")
-  //                     }}>Sign out</Dropdown.Item>
-  //                   </ul>
-  //               </div>
-  //             </div>
-
-  //           </div>
-  //         </div>
-
-        
-        
-  //     </div>
-  //   </>
-  // );
 
   const handleLogout = () => {
       const token = localStorage.getItem('token')
@@ -233,12 +35,10 @@ const Header: React.FC = () => {
         .then((res) => {
           // // console.log(res);
           if (res.data.message === 'logout') {
-            // console.log('seccc')
             localStorage.setItem('token', '')
             localStorage.setItem('user', '')
             navigate("/signup")
           } else {
-            // console.log(res)
           }
         })
 
@@ -248,8 +48,6 @@ const Header: React.FC = () => {
 
   return (
     <>     
-      
-      
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 fixed w-full top-0 nav_bar" >
         <div className="container flex flex-wrap items-center justify-between mx-auto">
         <a href="/" className="flex items-center">
@@ -293,12 +91,6 @@ const Header: React.FC = () => {
                   
               </div>
               <ul className="py-1" aria-labelledby="user-menu-button">
-                {/* <li>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-                </li>
-                <li>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-                </li> */}
                 <li>
                   <a href="/ChangeImgAvt" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Set avatar</a>
                 </li>
@@ -338,12 +130,6 @@ const Header: React.FC = () => {
             <li>
               <a href="/changeinfor" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
             </li>
-            {/* <li>
-              <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
-            </li>
-            <li>
-              <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-            </li> */}
           </ul>
         </div>
         </div>

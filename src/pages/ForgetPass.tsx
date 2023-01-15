@@ -91,7 +91,6 @@ const ForgetPass: React.FC = () => {
                                     }
                                 })
                                 .catch((err) => {
-                                    // // console.log(err.message)
                                     const message = err.message
                                     toast.error(message, {
                                         position: "top-right",

@@ -53,68 +53,24 @@ const VideoCall: React.FC = () => {
             secure: true,
         })
       );
-      
-     
-
-      
-      
-      // socket = io('')
-
-      // socket.current.emit("make-call", calluserid, currentUser._id);
     }
   }, [currentUser]);
 
-
-  
-  // useEffect(() => {
-  //   if (socket.current) {
-  //     socket.current.on("end-recieve", (currentUserId) => {
-  //       // console.log(currentUserId);
-  //     });
-  //   }
-  // }, []);
-
   useEffect(() => {
     if (MyPeer) {
-      // MyPeer.on("open", (id: any) => {
-      //   setPeerId(id)
-      // })
-      
-      // MyPeer.on('connection', function(conn: any) {
-      //   conn.on('data', function(data: any){
-      //     // Will print 'hi!'
-      //     // console.log(data);
-      //   });
-      // });
-      // console.log(MyPeer);
-
-      // MyPeer.on('error', (data: any) => {
-      //   // console.log('peer errors')
-      // })
       MyPeer.on("open", (id: any) => {
-        
         setPeerId(id)
-        
-
-        // console.log(peerId)
-        
-        // // console.log(callusername, 2)
         navigator.mediaDevices 
           .getUserMedia({
             video: true,
             audio: true,
           })
           .then((stream: any) => {
-            
             const call = MyPeer.call(callusername, stream);
-            // // console.log(stream)
-            // myVideo.muted = true;
             addVideoStream(myVideo, stream);
             if (call) {
               call.on("stream", (remoteStream: any) => {
                 addVideoStream(currentVideoCall, remoteStream);
-                // // console.log(remoteStream);
-                
               });
             }
           });
@@ -124,15 +80,12 @@ const VideoCall: React.FC = () => {
   }, [MyPeer]);
 
   useEffect(() => {
-    // // console.log(peerId)
     if (peerId) {
       let data = {
         receiver: callusername,
         sender: JSON.parse(localStorage.getItem("user")||"").username,
         peer_id: peerId
       }
-
-      // // console.log(data)
 
       const token = localStorage.getItem('token')
 
@@ -145,9 +98,9 @@ const VideoCall: React.FC = () => {
       }
 
       axios.post('  https://project-ltw-final.onrender.com/chat-app/start-call/', data, config).then(response => {
-        // console.log(response)
+        
       }).catch(error => {
-        // // console.log(error.response)
+       
       })
 
       
@@ -158,18 +111,13 @@ const VideoCall: React.FC = () => {
   }, [peerId])
 
   const socket = new WebSocket(`wss://project-ltw-final.onrender.com/ws/message/${peerId}/`)
-  // console.log(peerId)
   socket.onmessage = (event) => {
-    // console.log(event)
     let message = JSON.parse(event.data);
-    // console.log(message)
     switch (message.status) {
       case 'end_call':
         handleEndCall()
-        // setisEndCall(false)
         break
     }
-    // // console.log(message)
   }
 
   const endCall = () => {
@@ -178,8 +126,6 @@ const VideoCall: React.FC = () => {
       sender: JSON.parse(localStorage.getItem("user")||"").username,
       peer_id: peerId
     }
-
-    // // console.log(data)
 
     const token = localStorage.getItem('token')
 
@@ -192,9 +138,9 @@ const VideoCall: React.FC = () => {
     };
 
     axios.post('https://project-ltw-final.onrender.com/chat-app/end-call/', data, config).then(response => {
-      // // console.log(response)
+     
     }).catch(error => {
-      // // console.log(error.response)
+    
     })
   }
 

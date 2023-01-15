@@ -29,9 +29,6 @@ export const getAllUsers = async (id) => {
     }
   };
 
-  // const bodyParameters = {
-  //   key: "value"
-  // };
   const res = await axios.get(`  https://project-ltw-final.onrender.com/chat-app/users/`, config);
   return res.data;
 
@@ -48,12 +45,6 @@ export const deleteUser = async (id) => {
 };
 
 export const sendMessage = async (data) => {
-
-  // const token = localStorage.getItem('token')
-
-  // const config = {
-  //   headers: { Authorization: `Bearer ${token}` }
-  // };
   const username = localStorage.getItem('user').username
   const res = await axios.post(`  https://project-ltw-final.onrender.com/chat-app/ws/message/${username}`, data);
   return res.data;
@@ -64,9 +55,9 @@ export const getMessage = async (data) => {
   const token = localStorage.getItem('token')
 
   const config = {
-    headers: { Authorization: `Bearer ${token}` ,
-    
-  }
+      headers: { 
+        Authorization: `Bearer ${token}` ,
+      }
   };
 
   // const bodyParameters = {

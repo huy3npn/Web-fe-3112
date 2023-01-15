@@ -1,12 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { MdCallEnd } from "react-icons/md";
-import { BsFillCameraVideoOffFill } from "react-icons/bs";
-import { IoMdMicOff } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
 import { Peer } from "peerjs";
-import { io } from "socket.io-client";
-import { setUncaughtExceptionCaptureCallback } from "process";
 import axios from "../axios";
 
 
@@ -20,13 +16,9 @@ function VideoCall() {
 
     useEffect(()=>{
         peer.on('open', (id) => {
-            // // console.log(id)
             setPeerId(id)
         })
-    },[])
-
-    // // console.log(peerId);
-    
+    },[]) 
     
     useEffect(() => {
         if(peerId !== ''){
@@ -37,9 +29,8 @@ function VideoCall() {
 
     const startcall = () => {
         const config = {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}`,
-            
-          
+          headers: { 
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           }
         };
         
@@ -49,13 +40,9 @@ function VideoCall() {
             sender: sender,
             peer_id: peerId
         }
-        // // console.log(callusername)
-        // // console.log(data)
 
         axios.post('  https://project-ltw-final.onrender.com/chat-app/start-call/', data, config).then(response => {
-        // // console.log(response)
         }).catch(error => {
-        // // console.log(error.response)
         })
     }
 

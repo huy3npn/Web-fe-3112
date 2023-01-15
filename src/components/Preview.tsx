@@ -2,14 +2,11 @@ import React, { useContext, useRef, useState, useEffect } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Types } from "mongoose";
 import { Avatar, Button, Modal, Spinner } from "flowbite-react";
-// import moment from "moment";
 import { Buffer } from "buffer";
 import axios from "axios";
-// import { chatSocket } from "../ws/ws"; 
 import { getAllUsers, setAvatar, deleteUser } from "../api";
 import userContext from "../utils/userContext";
 import { statusSocket } from "../ws/ws"
-// import Header from "./Header"
 import { chatSocket } from "../ws/ws"
 
 interface Props {
@@ -32,8 +29,6 @@ const Preview: React.FC<Props> = ({
 
   const searchRef = useRef() as any;
 
-  // const set = true
-
   const [isDeleteUserModalOpen, setIsDeleteUserModalOpen] =
     useState<boolean>(false);
 
@@ -44,12 +39,6 @@ const Preview: React.FC<Props> = ({
   const [avatarSelectIndex, setAvatarSelectIndex] = useState<number>(NaN);
 
   const [focus, setFocus] = useState<boolean>(false)
-
-  // const token = localStorage.getItem('token')
-
-  // const chatSocket1 = chatSocket
-
-  // const [status, setStatus] = useState<string>('')
 
   const [userOnline, setUserOnline] = useState<string[]>([])
 
@@ -85,10 +74,9 @@ const Preview: React.FC<Props> = ({
     axios.get('https://project-ltw-final.onrender.com/chat-app/images/')
       .then((res) => {
         setAvt(res.data)
-        // console.log(res.data)
       }) 
       .catch((err) => {
-        // console.log(err.message)
+        
       })
   },[])
 
@@ -99,8 +87,6 @@ const Preview: React.FC<Props> = ({
     refetch: refetchAllUsers,
   } = useQuery({
     queryFn: () => getAllUsers(),
-    // queryKey: ["allUsersData"],
-    // enabled: !!isSuccess,
   });
 
   // // console.log(allUsers);
@@ -126,7 +112,6 @@ const Preview: React.FC<Props> = ({
       }
       setAvatarImage(imageData);
     },
-    // queryKey: ["getAvatar"],
     refetchOnWindowFocus: false,
   });
   
@@ -145,7 +130,6 @@ const Preview: React.FC<Props> = ({
           title: res.message,
           type: "success",
         });
-        // // console.log(res)
       },
       onError: (err: any) =>
         setIsAlert({
@@ -156,9 +140,6 @@ const Preview: React.FC<Props> = ({
         }),
     }
   );
-
-  // chatSocket.onopen = event => // console.log("Connected")
-  // chatSocket.onclose = event => // console.log("Disconnected")
 
   const handleDeleteUser = useMutation((id: string) => deleteUser(id), {
     onSuccess: (res) => {
@@ -180,41 +161,18 @@ const Preview: React.FC<Props> = ({
       }),
   });
   
-  
-  // statusSocket.onopen = event => // console.log("Connected")
-  
   statusSocket.onmessage = function(evet) {
     const status = JSON.parse(evet.data)
-    // setSocket(io('/'));
-    // // console.log(status.user)
     const userOnline = status.user.split(",")
     setUserOnline(userOnline)
     
   }
-  // statusSocket.onclose = event => // console.log("Disconnected")
-
-  // chatSocket.onmessage = function(e) {
-  //   const res = JSON.parse(e.data).text
-  //   // setSocket(io('/'));
-  //   const data = res.split(":")
-  //   const sender = data[0]
-  //   const message = data[1]
-  //   // console.log(message)
-  //   const username_mess = document.getElementsByClassName(`${sender}-mess`)[0]
-  //   // username_mess.innerText = message
-  //   // console.log(username_mess.innerHTML)
-  //   username_mess.innerHTML = message
-  // }
-
+ 
   const handleDate = (date: string) => {
     return new Date(date).toLocaleTimeString()
   }
-
-  // // console.log(allUsers[0].messages[0].date_time)
  
   const username = JSON.parse(localStorage.getItem('user')||'').username
-  
-  // // console.log(date)
 
   const searchFunction = (seachName: string) => {
     if (allUsers) {
@@ -233,7 +191,6 @@ const Preview: React.FC<Props> = ({
   const findAvt = (id: any) => {
     if (avt && dataid) {
       const result = avt.find((x:any) => x.id == id)
-      // console.log(result)
       if (!result) {
         console.log('No avt found')
         return 'https://project-ltw-final.onrender.com/media/girl.svg'
@@ -242,7 +199,6 @@ const Preview: React.FC<Props> = ({
       }
     }
     else {
-      // console.log("No avt found")
     }
   }
 
@@ -254,54 +210,8 @@ const Preview: React.FC<Props> = ({
       } h-full md:col-span-2 col-span-full md:flex flex-col gap-2 drop-shadow-lg z-10`}
     >
       <div className="w-full basis-20 flex justify-between items-center rounded-tl-lg px-4 shadow-lg">
-        {/* <p className="font-dev text-[#FF6A3D] text-7xl">kq</p> */}
-        
         <div className="flex items-center justify-end w-full z-10">
-          {/* <div className="dropdown dropdown-end">
-            <label
-              tabIndex={0}
-              className="btn bg-transparent outline-none border-0 hover:bg-transparent"
-            >
-              <Avatar
-                className="absolute -z-10 text-[#ff6a3d] pointer-events-none"
-                img={
-                  user && user.imgUrl
-                    ? `data:image/svg+xml;base64,${user.imgUrl}`
-                    : undefined
-                }
-                rounded={true}
-                status="online"
-                statusPosition="bottom-right"
-              ></Avatar>
-            </label>
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu p-2 shadow rounded-box w-52 bg-white"
-            >
-              <Dropdown.Header>
-                <span className="block text-sm truncate">
-                  {user && user.fullname}
-                </span>
-                <span className="block truncate text-sm font-medium">
-                  {user && user.email}
-                </span>
-              </Dropdown.Header>
-
-              <Dropdown.Item onClick={() => searchRef.current.focus()}>
-                New Message
-              </Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item onClick={() => setIsAvatarModalOpen(true)}>
-                Pick an Avatar
-              </Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item onClick={() => setIsDeleteUserModalOpen(true)}>
-                Delete Account
-              </Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item onClick={userLogout}>Sign out</Dropdown.Item>
-            </ul>
-          </div> */}
+          
         </div>
       </div>
 

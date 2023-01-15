@@ -68,7 +68,7 @@ const AnswerCall: React.FC = () => {
   // }
 
   
-  const socket = new WebSocket(`ws://project-ltw-final.onrender.com/ws/message/${answerusername}/`)
+  const socket = new WebSocket(`wss://project-ltw-final.onrender.com/ws/message/${answerusername}/`)
   socket.onmessage = (event) => {
     let message = JSON.parse(event.data);
     switch (message.status) {

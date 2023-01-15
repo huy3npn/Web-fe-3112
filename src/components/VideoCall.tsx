@@ -157,7 +157,7 @@ const VideoCall: React.FC = () => {
     }
   }, [peerId])
 
-  const socket = new WebSocket(`ws://project-ltw-final.onrender.com/ws/message/${peerId}/`)
+  const socket = new WebSocket(`wss://project-ltw-final.onrender.com/ws/message/${peerId}/`)
   // console.log(peerId)
   socket.onmessage = (event) => {
     // console.log(event)
